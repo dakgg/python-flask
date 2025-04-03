@@ -7,6 +7,11 @@ source venv/bin/activate # 가상환경 시작
 pip install -r requirements.txt # 패키지 설치
 deactivate # 가상환경 종료
 ```
+### 레디스
+```shell
+brew install redis
+brew services start redis
+```
 
 ## 앱 시작
 ```shell

@@ -1,14 +1,9 @@
 from celery import Celery
-import os
-
-# 결과 저장 경로 만들기
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-RESULT_BACKEND_PATH = f'file://{BASE_DIR}/celery_results'
 
 celery_app = Celery(
     'tasks',
-    broker='memory://', # 메모리 큐 (개발용)
-    backend=RESULT_BACKEND_PATH # 파일 기반 결과 저장 (JSON)
+    broker='redis://localhost:6379/0',   # 브로커 (작업 큐)
+    backend='redis://localhost:6379/0'   # 결과 저장소
 )
 
 @celery_app.task

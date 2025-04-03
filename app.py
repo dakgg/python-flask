@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/add', methods=['POST'])
 def add_numbers():
     data = request.get_json()
-    task = add.apply_async(args=[data['x'], data['y']])
+    task = add.delay(data['x'], data['y'])
     return jsonify({'task_id': task.id}), 202
 
 @app.route('/result/<task_id>')
@@ -17,6 +17,6 @@ def get_result(task_id):
         'ready': result.ready(),
         'result': result.result if result.ready() else None
     })
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
