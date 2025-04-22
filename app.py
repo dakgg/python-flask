@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from tasks import add, celery_app
+from tasks import add, celery
 from celery.result import AsyncResult
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ def add_numbers():
 
 @app.route('/result/<task_id>')
 def get_result(task_id):
-    result = AsyncResult(task_id, app=celery_app)
+    result = AsyncResult(task_id, app=celery)
     return jsonify({
         'ready': result.ready(),
         'result': result.result if result.ready() else None
