@@ -6,12 +6,13 @@ services:
   web:
     build: .
     ports:
-      - "7777:7777"
+      - "7777:7777" # flask
+      - "3920:3920" # debugpy
     volumes:
       - .:/app
     environment:
       - FLASK_ENV=development 
-    command: flask run --host=0.0.0.0 --port=7777
+    command: python -m debugpy --listen 0.0.0.0:3920 --wait-for-client -m flask run --host=0.0.0.0 --port=7777
     depends_on:
       - redis
 
