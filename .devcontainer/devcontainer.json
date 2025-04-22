@@ -1,0 +1,13 @@
+{
+    "name": "dakg-dev-container",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "web",
+    "workspaceFolder": "/app",
+  
+    "forwardPorts": [
+      7777,  // Flask 포트
+      3920   // 디버깅 포트
+    ],
+    "postCreateCommand": "pip install -r requirements.txt",
+    "remoteUser": "root"
+  }
