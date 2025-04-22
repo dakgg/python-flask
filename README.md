@@ -1,4 +1,4 @@
-# Python Flask + Docker Sample Project
+# Python Flask + Docker
 
 ## 📚 정의
 Flask와 Docker를 활용한 기본 애플리케이션 프로젝트입니다.
@@ -10,7 +10,7 @@ Flask와 Docker를 활용한 기본 애플리케이션 프로젝트입니다.
 ## 파일 구조
 ```
 ├── app.py               # Flask 메인 애플리케이션
-├── tasks.py             # 백그라운드 작업 (비어있을 것임)
+├── tasks.py             # 비동기 작업
 ├── requirements.txt     # 필요 패키지 목록
 ├── Dockerfile           # Docker 이미지 빌드 설정
 └── docker-compose.yml   # Docker Compose 환경 설정
